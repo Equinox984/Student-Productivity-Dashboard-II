@@ -7,7 +7,7 @@ separator2 = "-----------------"
 
 
 def DisplayTask():
-    return
+    pass
 
 
 def AddTask():
@@ -22,9 +22,9 @@ print(separator2)
 
 while True:  # run forever
     selection = input(("1. Task Manager\n2. Exit\n-> "))
-    if selection != 1 and selection != 2:
+    if selection != "1" and selection != "2":
         print("\nInvalid option. Please choose 1 or 2.\n")
-    elif selection == 1:  # If the user chooses 1 (Task Manager)
+    elif selection == "1":  # If the user chooses 1 (Task Manager)
         # Display Tasks and return Y o N to addTask variable.
         addTask = DisplayTask()
 
