@@ -7,7 +7,10 @@ separator2 = "-----------------"
 
 
 def DisplayTask():
-    pass
+    print(separator + "\nDisplaying Current Tasks" + separator)
+
+    if not taskList:
+        print("No tasks has been added, my friend UwU.")
 
 
 def AddTask():
@@ -35,3 +38,4 @@ while True:  # run forever
             continue
     else:
         break
+
