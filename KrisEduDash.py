@@ -1,41 +1,71 @@
 """Task Manager Tool"""
 
-taskList = []  # Creating an empty list to store tasks
-# Define a visual separator
-separator = "=================================="
-separator2 = "-----------------"
+taskList = []
+
+separator = "========================="
+separator2 = "-------------------------"
 
 
 def DisplayTask():
-    print(separator + "\nDisplaying Current Tasks" + separator)
+    print("\n")
+    print(separator + "\nDisplaying Current Tasks\n" + separator)
 
     if not taskList:
-        print("No tasks has been added, my friend UwU.")
+        print("\nNo tasks has been added, my friend UwU.\n")
+    else:
+        # Python orders the first element of the tuple (Priority)
+        taskList.sort()
+        print("\nTasks by Priority (1=High):")
+
+        # We use the ordered list to display the tasks
+        for priority, task in taskList:
+            print(f"[{priority}] - {task}\n")
+
+    # We ask the user if they want to add a new task
+    while True:
+        choice = input("Do you want to add a task? (y/n): ").lower().strip()
+        if choice == "y" or choice == "n":
+            return choice
+        else:
+            print("Invalid input. Type 'y' or 'n'.")
 
 
+# We ask the user to add a task and priority and saves it on the list
 def AddTask():
-    pass
+    print(separator2)
+    new_task = input("\nEnter the task description: ")
+
+    # A loop to make sure that the priority is a valid number (1, 2, or 3)
+    while True:
+        try:
+            priority = int(input("Enter Priority Level (1=High, 3=Low): "))
+            if 1 <= priority <= 3:
+                break
+            else:
+                print("Priority must be 1, 2, or 3.")
+        except ValueError:
+            print("Invalid input. Enter a number.")
+
+    # We save the task as a Tuple (Priority, Task)
+    taskList.append((priority, new_task))
+    print(f"Task '{new_task}' added with priority {priority}!")
+    print(separator2)
 
 
 # Main Program Tool
-# Welcome Message
 print(separator2)
-print("Welcome to Edu Dash")
+print("Welcome to Edu Dashboard")
 print(separator2)
 
-while True:  # run forever
-    selection = input(("1. Task Manager\n2. Exit\n-> "))
-    if selection != "1" and selection != "2":
-        print("\nInvalid option. Please choose 1 or 2.\n")
-    elif selection == "1":  # If the user chooses 1 (Task Manager)
-        # Display Tasks and return Y o N to addTask variable.
+while True:
+    choice = input(("\n1. Task Manager\n2. Exit\n-> "))
+    if choice == "1":
         addTask = DisplayTask()
-
-        if addTask == "y":  # Check the value stored in the variable.
-            # if "y" then call the AddTask() function.
+        if addTask == "y":
             AddTask()
-        else:  # if "n" go back to the main selection menu-
-            continue
-    else:
+    elif choice == "2":
         break
+    else:
+        print("\nInvalid option. Please choose 1 or 2.\n")
 
+print("\nExiting Task Manager. Goodbye!")
