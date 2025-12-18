@@ -38,7 +38,7 @@ def AddTask():
     # A loop to make sure that the priority is a valid number (1, 2, or 3)
     while True:
         try:
-            priority = int(input("Enter Priority Level (1=High, 3=Low): "))
+            priority = int(input("Enter Priority Level (1=High, 2=Medium 3=Low): "))
             if 1 <= priority <= 3:
                 break
             else:
