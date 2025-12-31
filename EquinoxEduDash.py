@@ -14,7 +14,7 @@ def display_tasks():
 1 - Display Tasks
 2 - Add Tasks
 3 - Main Menu
-->  """)
+->  """).strip()
             )
         except ValueError:
             print(separator)
@@ -33,14 +33,14 @@ def display_tasks():
                 print("\n")
                 print(separator)
         elif choice_tasks == 2:
-            new_task = input("Write your new task -> ")
+            new_task = input("Write your new task -> ").strip()
             print("\n")
             while True:
                 try:
                     priority = int(
                         input(
                             "Write the Priority for the Task (1 = High, 2 = Medium, 3 = Low) -> "
-                        )
+                        ).strip()
                     )
                     if priority == 0 or priority > 3:
                         print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
@@ -67,7 +67,7 @@ def grade_tracker():
 1 - Display Grades
 2 - Add Grades
 3 - Main Menu
-->  """)
+->  """).strip()
             )
         except ValueError:
             print(separator)
@@ -88,14 +88,14 @@ def grade_tracker():
         elif choice_grades == 2:
             while True:
                 try:
-                    new_grade = float(input("Write your new grades -> "))
+                    new_grade = float(input("Write your new grades -> ").strip())
                 except ValueError:
                     print("\nERROR: Invalid Option. You must add a Number!!!\n")
                     continue
                 if new_grade < 0 or new_grade > 100:
                     print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
                     continue
-                grade_class = input("Write the Name of your Class -> ")
+                grade_class = input("Write the Name of your Class -> ").strip()
                 grades.append([new_grade, grade_class])
                 print("\n")
                 break
@@ -116,7 +116,7 @@ while True:
 1 - Task Manager
 2 - Grade Tracker
 3 - Exit\n
-->  """)
+->  """).strip()
         )
         if choice == 1:
             display_tasks()  # Here will be a function to display tasks
