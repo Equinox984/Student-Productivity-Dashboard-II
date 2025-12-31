@@ -2,6 +2,7 @@
 
 separator = "==================================\n"
 tasks = []
+grades = []
 
 
 # Create Display Tasks function that also allows the user to add tasks if he wants to
@@ -57,6 +58,54 @@ def display_tasks():
             print("ERROR: Select 1, 2, or 3!!!")
 
 
+# Create a grade_tracker function to let the user add his grades and display them
+def grade_tracker():
+    while True:
+        try:
+            choice_grades = int(
+                input("""\n
+1 - Display Grades
+2 - Add Grades
+3 - Main Menu
+->  """)
+            )
+        except ValueError:
+            print(separator)
+            print("ERROR: Write a Number!!!!\n")
+            print(separator)
+            continue
+        print(separator)
+        if choice_grades == 1:
+            if not grades:
+                print("You don't have any grades.\n")
+            else:
+                grades.sort(reverse=True)
+                print("This are your current grades:")
+                for new_grade, grade_class in grades:
+                    print(f"[{new_grade}] - {grade_class}\n")
+                print("\n")
+                print(separator)
+        elif choice_grades == 2:
+            while True:
+                try:
+                    new_grade = float(input("Write your new grades -> "))
+                except ValueError:
+                    print("\nERROR: Invalid Option. You must add a Number!!!\n")
+                    continue
+                if new_grade < 0 or new_grade > 100:
+                    print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
+                    continue
+                grade_class = input("Write the Name of your Class -> ")
+                grades.append([new_grade, grade_class])
+                print("\n")
+                break
+
+        elif choice_grades == 3:
+            break
+        else:
+            print("ERROR: Select 1, 2, or 3!!!")
+
+
 # Create Loop with Menu that handles invalid Values
 while True:
     try:
@@ -65,12 +114,16 @@ while True:
             input("""\n====== Equinox EduDashboard ======
 
 1 - Task Manager
-2 - Exit\n
+2 - Grade Tracker
+3 - Exit\n
 ->  """)
         )
         if choice == 1:
             display_tasks()  # Here will be a function to display tasks
         elif choice == 2:
+            grade_tracker()
+        elif choice == 3:
+            print("\nGoodbye and Have a Nice Day! ;)\n")
             break
         else:
             print("ERROR: Select a Valid Option!!!")
