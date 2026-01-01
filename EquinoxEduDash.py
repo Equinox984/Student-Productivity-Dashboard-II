@@ -29,7 +29,23 @@ def display_tasks():
                 print("You don't have any tasks.\n")
                 print(separator)
             else:
-                print(f"You have currently [{len(tasks)}] task(s).")
+                hig_priority = 0
+                med_priority = 0
+                low_priority = 0
+                print(f"You have [{len(tasks)}] task(s).")
+                for priority, new_task in tasks:
+                    if priority == 1:
+                        hig_priority += 1
+                    elif priority == 2:
+                        med_priority += 1
+                    elif priority == 3:
+                        low_priority += 1
+                print(f"""
+You have [{hig_priority}] high priority task(s).
+
+You have [{med_priority}] medium priority task(s).
+
+You have [{low_priority}] low priority task(s).\n""")
                 print(separator)
 
         elif choice_tasks == 2:
