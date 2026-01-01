@@ -74,4 +74,4 @@ Clone the repository and run the script directly in your terminal:
 
 ---
 
-**Developed with 💻 during New Year's Eve 2025 → 2026**
+**Developed with ❤️ during New Year's Eve 2025 → 2026**
