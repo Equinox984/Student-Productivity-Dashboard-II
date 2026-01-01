@@ -97,13 +97,31 @@ def grade_tracker():
                         print(separator)
                     else:
                         grades.sort(reverse=True)
-                        print("This are your current grades:")
+                        print("\nThis are your current grades:")
                         for new_grade, grade_class in grades:
                             print(f"[{new_grade}] - {grade_class}\n")
                         print("\n")
                         print(separator)
                 elif grades_display == 2:
-                    print("\nWork on Progress")
+                    if not grades:
+                        print(separator)
+                        print("You don't have any grades.\n")
+                        print(separator)
+                    else:
+                        only_numbers = []
+                        for new_grade, grade_class in grades:
+                            only_numbers.append(new_grade)
+
+                        total_grades = sum(only_numbers)
+                        average = total_grades / len(grades)
+                        max_value = max(only_numbers)
+                        min_value = min(only_numbers)
+
+                        print(separator)
+                        print(f"Average Grades: {average}")
+                        print(f"Highest Grade: {max_value}")
+                        print(f"Lowest Grade: {min_value}\n")
+                        print(separator)
                 elif grades_display == 3:
                     break
                 else:
@@ -112,7 +130,7 @@ def grade_tracker():
         elif choice_grades == 2:
             while True:
                 try:
-                    new_grade = float(input("Write your new grades -> ").strip())
+                    new_grade = float(input("\nWrite your new grades -> ").strip())
                 except ValueError:
                     print("\nERROR: Invalid Option. You must add a Number!!!\n")
                     continue
