@@ -74,17 +74,41 @@ def grade_tracker():
             print("ERROR: Write a Number!!!!\n")
             print(separator)
             continue
-        print(separator)
+
         if choice_grades == 1:
-            if not grades:
-                print("You don't have any grades.\n")
-            else:
-                grades.sort(reverse=True)
-                print("This are your current grades:")
-                for new_grade, grade_class in grades:
-                    print(f"[{new_grade}] - {grade_class}\n")
-                print("\n")
-                print(separator)
+            while True:
+                try:
+                    grades_display = int(
+                        input("""\n
+1 - Full View
+2 - Brief View
+3 - Grades Menu
+->  """).strip()
+                    )
+                except ValueError:
+                    print(separator)
+                    print("ERROR: Write a Number!!!!\n")
+                    print(separator)
+                    continue
+                if grades_display == 1:
+                    if not grades:
+                        print(separator)
+                        print("You don't have any grades.\n")
+                        print(separator)
+                    else:
+                        grades.sort(reverse=True)
+                        print("This are your current grades:")
+                        for new_grade, grade_class in grades:
+                            print(f"[{new_grade}] - {grade_class}\n")
+                        print("\n")
+                        print(separator)
+                elif grades_display == 2:
+                    print("\nWork on Progress")
+                elif grades_display == 3:
+                    break
+                else:
+                    print("ERROR: Select 1, 2, or 3!!!")
+
         elif choice_grades == 2:
             while True:
                 try:
