@@ -11,9 +11,10 @@ def display_tasks():
         try:
             choice_tasks = int(
                 input("""\n
-1 - Display Tasks
-2 - Add Tasks
-3 - Main Menu
+1 - Task Statistics
+2 - Display Tasks
+3 - Add Tasks
+4 - Main Menu
 ->  """).strip()
             )
         except ValueError:
@@ -22,7 +23,16 @@ def display_tasks():
             print(separator)
             continue
         print(separator)
+
         if choice_tasks == 1:
+            if not tasks:
+                print("You don't have any tasks.\n")
+                print(separator)
+            else:
+                print(f"You have currently [{len(tasks)}] task(s).")
+                print(separator)
+
+        elif choice_tasks == 2:
             if not tasks:
                 print("You don't have any tasks.\n")
             else:
@@ -32,7 +42,8 @@ def display_tasks():
                     print(f"[{priority}] - {new_task}\n")
                 print("\n")
                 print(separator)
-        elif choice_tasks == 2:
+
+        elif choice_tasks == 3:
             new_task = input("Write your new task -> ").strip()
             print("\n")
             while True:
@@ -52,10 +63,10 @@ def display_tasks():
                     print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                     continue
 
-        elif choice_tasks == 3:
+        elif choice_tasks == 4:
             break
         else:
-            print("ERROR: Select 1, 2, or 3!!!")
+            print("ERROR: Select 1, 2, 3, or 4!!!")
 
 
 # Create a grade_tracker function to let the user add his grades and display them
@@ -90,6 +101,7 @@ def grade_tracker():
                     print("ERROR: Write a Number!!!!\n")
                     print(separator)
                     continue
+
                 if grades_display == 1:
                     if not grades:
                         print(separator)
@@ -102,6 +114,7 @@ def grade_tracker():
                             print(f"[{new_grade}] - {grade_class}\n")
                         print("\n")
                         print(separator)
+
                 elif grades_display == 2:
                     if not grades:
                         print(separator)
@@ -122,6 +135,7 @@ def grade_tracker():
                         print(f"Highest Grade: {max_value}")
                         print(f"Lowest Grade: {min_value}\n")
                         print(separator)
+
                 elif grades_display == 3:
                     break
                 else:
