@@ -1,8 +1,32 @@
 """Equinox Edu DashBoard"""
 
+import random
+
 separator = "==================================\n"
 tasks = []
 grades = []
+quotes = [
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Code is like humor. When you have to explain it, it's bad. - Cory House",
+    "First, solve the problem. Then, write the code. - John Johnson",
+    "Programming isn't about what you know; it's about what you can figure out.",
+    "The best error message is the one that never shows up. - Thomas Fuchs",
+    "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
+    "Experience is the name everyone gives to their mistakes. - Oscar Wilde",
+    "In order to be irreplaceable, one must always be different. - Coco Chanel",
+    "Java is to JavaScript what car is to Carpet. - Chris Heilmann",
+    "Knowledge is power. - Francis Bacon",
+    "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code. - Dan Salomon",
+    "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. - Antoine de Saint-Exupery",
+    "Before software can be reusable it first has to be usable. - Ralph Johnson",
+    "Make it work, make it right, make it fast. - Kent Beck",
+    "Simplicity is the soul of efficiency. - Austin Freeman",
+    "Fix the cause, not the symptom. - Steve Maguire",
+    "Optimism is an occupational hazard of programming: feedback is the treatment. - Kent Beck",
+    "Walking on water and developing software from a specification are easy if both are frozen. - Edward V Berard",
+    "It's not a bug – it's an undocumented feature. - Anonymous",
+    "The most important property of a program is whether it accomplishes the intention of its user. - C.A.R. Hoare",
+]
 
 
 # Create Display Tasks function that also allows the user to add tasks if he wants to
@@ -195,6 +219,7 @@ while True:
         elif choice == 2:
             grade_tracker()
         elif choice == 3:
+            print(f"\n{random.choice(quotes)}")
             print("\nGoodbye and Have a Nice Day! ;)\n")
             break
         else:
