@@ -54,7 +54,7 @@ Clone the repository and run the script directly in your terminal:
 - ✅ Priority-based task sorting
 - ✅ Automatic grade calculation (average, max, min)
 - ✅ Grade-to-highest sorting
-- ✅ 20 curated motivational programming quotes
+- ✅ Curated motivational programming quotes
 - ✅ Clean, user-friendly interface with separators
 - ✅ Input validation on all numeric entries
 
