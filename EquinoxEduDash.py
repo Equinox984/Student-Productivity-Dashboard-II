@@ -26,6 +26,11 @@ quotes = [
     "Walking on water and developing software from a specification are easy if both are frozen. - Edward V Berard",
     "It's not a bug – it's an undocumented feature. - Anonymous",
     "The most important property of a program is whether it accomplishes the intention of its user. - C.A.R. Hoare",
+    "Programs must be written for people to read, and only incidentally for machines to execute. - Harold Abelson",
+    "Controlling complexity is the essence of computer programming. - Brian Kernighan",
+    "The function of good software is to make the complex appear to be simple. - Grady Booch",
+    "I am a lazy person, which is why I like open source, for other people to do work for me - Linus Torvalds",
+    "The best way to predict the future is to invent it. - Alan Kay",
 ]
 
 
