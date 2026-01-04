@@ -9,7 +9,7 @@ quotes = [
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Code is like humor. When you have to explain it, it's bad. - Cory House",
     "First, solve the problem. Then, write the code. - John Johnson",
-    "Programming isn't about what you know; it's about what you can figure out.",
+    "Talk is cheap. Show me the code. - Linus Torvalds",
     "The best error message is the one that never shows up. - Thomas Fuchs",
     "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
     "Experience is the name everyone gives to their mistakes. - Oscar Wilde",
