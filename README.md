@@ -34,13 +34,13 @@ Clone the repository and run the script directly in your terminal:
 
 1. **Clone the repository:**
 ```bash
-   git clone https://github.com/YourUsername/EduDash
-   cd EduDash
+   git clone https://github.com/Equinox984/Student-Productivity-Dashboard-II
+   cd Student-Productivity-Dashboard-II/
 ```
 
 2. **Run the program:**
 ```bash
-   python3 edudash.py
+   python3 EquinoxEduDash.py
 ```
 
 3. **Navigate the menu:**
