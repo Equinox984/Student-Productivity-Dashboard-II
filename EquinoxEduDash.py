@@ -1,5 +1,6 @@
 """Equinox Edu DashBoard"""
 
+# Lists and Modules
 import random
 
 separator = "==================================\n"
@@ -53,6 +54,7 @@ def display_tasks():
             continue
         print(separator)
 
+        # Task Statistics Menu
         if choice_tasks == 1:
             if not tasks:
                 print("You don't have any tasks.\n")
@@ -77,6 +79,7 @@ You have [{med_priority}] medium priority task(s).
 You have [{low_priority}] low priority task(s).\n""")
                 print(separator)
 
+        # Display Tasks Menu
         elif choice_tasks == 2:
             if not tasks:
                 print("You don't have any tasks.\n")
@@ -88,6 +91,7 @@ You have [{low_priority}] low priority task(s).\n""")
                 print("\n")
                 print(separator)
 
+        # Add Tasks Menu With Priority
         elif choice_tasks == 3:
             new_task = input("Write your new task -> ").strip()
             print("\n")
@@ -98,7 +102,7 @@ You have [{low_priority}] low priority task(s).\n""")
                             "Write the Priority for the Task (1 = High, 2 = Medium, 3 = Low) -> "
                         ).strip()
                     )
-                    if priority == 0 or priority > 3:
+                    if priority <= 0 or priority > 3:
                         print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                         continue
                     tasks.append([priority, new_task])
@@ -108,6 +112,7 @@ You have [{low_priority}] low priority task(s).\n""")
                     print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                     continue
 
+        # Return to Main Menu
         elif choice_tasks == 4:
             break
         else:
@@ -131,6 +136,7 @@ def grade_tracker():
             print(separator)
             continue
 
+        # Display Grades Menu
         if choice_grades == 1:
             while True:
                 try:
@@ -147,6 +153,7 @@ def grade_tracker():
                     print(separator)
                     continue
 
+                # Full View Menu for Grades and their Classes
                 if grades_display == 1:
                     if not grades:
                         print(separator)
@@ -160,6 +167,7 @@ def grade_tracker():
                         print("\n")
                         print(separator)
 
+                # Brief View for Quick Glances to Statistics
                 elif grades_display == 2:
                     if not grades:
                         print(separator)
@@ -181,11 +189,13 @@ def grade_tracker():
                         print(f"Lowest Grade: {min_value}\n")
                         print(separator)
 
+                # Return to Grades Menu
                 elif grades_display == 3:
                     break
                 else:
                     print("ERROR: Select 1, 2, or 3!!!")
 
+        # Add Grades
         elif choice_grades == 2:
             while True:
                 try:
@@ -193,7 +203,7 @@ def grade_tracker():
                 except ValueError:
                     print("\nERROR: Invalid Option. You must add a Number!!!\n")
                     continue
-                if priority <= 0 or priority > 3:
+                if new_grade < 0 or new_grade > 100:
                     print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
                     continue
                 grade_class = input("Write the Name of your Class -> ").strip()
@@ -201,13 +211,14 @@ def grade_tracker():
                 print("\n")
                 break
 
+        # Return to Main Menu
         elif choice_grades == 3:
             break
         else:
             print("ERROR: Select 1, 2, or 3!!!")
 
 
-# Create Loop with Menu that handles invalid Values
+# Create Loop with Main Menu that Handles Invalid Values
 while True:
     try:
         print(separator)
@@ -219,10 +230,12 @@ while True:
 3 - Exit\n
 ->  """).strip()
         )
+        # Adding the functions that we created earlier
         if choice == 1:
-            display_tasks()  # Here will be a function to display tasks
+            display_tasks()
         elif choice == 2:
             grade_tracker()
+        # Quotes Functionality on Exit using random module
         elif choice == 3:
             print(f"\n{random.choice(quotes)}")
             print("\nGoodbye and Have a Nice Day! ;)\n")
