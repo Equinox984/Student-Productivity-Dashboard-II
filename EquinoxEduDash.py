@@ -193,7 +193,7 @@ def grade_tracker():
                 except ValueError:
                     print("\nERROR: Invalid Option. You must add a Number!!!\n")
                     continue
-                if new_grade < 0 or new_grade > 100:
+                if priority <= 0 or priority > 3:
                     print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
                     continue
                 grade_class = input("Write the Name of your Class -> ").strip()
