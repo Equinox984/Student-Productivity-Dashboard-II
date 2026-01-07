@@ -41,12 +41,15 @@ def display_tasks():
                 low_priority = 0
                 print(f"You have [{len(tasks)}] task(s).")
                 for priority, new_task in tasks:
-                    if priority == 1:
-                        hig_priority += 1
-                    elif priority == 2:
-                        med_priority += 1
-                    elif priority == 3:
-                        low_priority += 1
+                    match priority:
+                        case 1:
+                            hig_priority += 1
+                        case 2:
+                            med_priority += 1
+                        case 3:
+                            low_priority += 1
+                        case _:
+                            pass
                 print(f"""
 You have [{hig_priority}] high priority task(s).
 
