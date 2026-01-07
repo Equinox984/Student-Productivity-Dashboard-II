@@ -10,15 +10,15 @@ separator = "==================================\n"
 tasks = []
 grades = []
 
-empty_task = print("""
+empty_task = """
 =========================================
 ====== You don't have any grades!!! =====
------------------------------------------\n""")
+-----------------------------------------\n"""
 
-empty_grades = print("""
+empty_grades = """
 =========================================
 ====== You don't have any grades!!! =====
------------------------------------------\n""")
+-----------------------------------------\n"""
 
 
 # Create Display Tasks function that also allows the user to add tasks if he wants to
