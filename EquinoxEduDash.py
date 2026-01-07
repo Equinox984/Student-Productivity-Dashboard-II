@@ -19,6 +19,7 @@ def display_tasks():
                 input("""
 ========================================
 ===== Welcome to the Task Manager! =====
+----------------------------------------
 
 1 - Task Statistics
 2 - Display Tasks
@@ -35,8 +36,10 @@ def display_tasks():
         # Task Statistics Menu
         if choice_tasks == 1:
             if not tasks:
-                print("You don't have any tasks.\n")
-                print(separator)
+                print("""
+========================================
+====== You don't have any tasks!!! =====
+----------------------------------------\n""")
             else:
                 hig_priority = 0
                 med_priority = 0
@@ -63,7 +66,10 @@ You have [{low_priority}] low priority task(s).\n""")
         # Display Tasks Menu
         elif choice_tasks == 2:
             if not tasks:
-                print("You don't have any tasks.\n")
+                print("""
+========================================
+====== You don't have any tasks!!! =====
+----------------------------------------\n""")
             else:
                 tasks.sort()
                 print("This are your current tasks:")
@@ -108,6 +114,7 @@ def grade_tracker():
                 input("""\n
 =========================================
 ===== Welcome to the Grade Tracker! =====
+-----------------------------------------
 
 1 - Display Grades
 2 - Add Grades
@@ -141,9 +148,10 @@ def grade_tracker():
                 # Full View Menu for Grades and their Classes
                 if grades_display == 1:
                     if not grades:
-                        print(separator)
-                        print("You don't have any grades.\n")
-                        print(separator)
+                        print("""
+=========================================
+====== You don't have any grades!!! =====
+-----------------------------------------\n""")
                     else:
                         grades.sort(reverse=True)
                         print("\nThis are your current grades:")
@@ -155,9 +163,10 @@ def grade_tracker():
                 # Brief View for Quick Glances to Statistics
                 elif grades_display == 2:
                     if not grades:
-                        print(separator)
-                        print("You don't have any grades.\n")
-                        print(separator)
+                        print("""
+=========================================
+====== You don't have any grades!!! =====
+-----------------------------------------\n""")
                     else:
                         only_numbers = []
                         for new_grade, grade_class in grades:
@@ -206,9 +215,11 @@ def grade_tracker():
 # Create Loop with Main Menu that Handles Invalid Values
 while True:
     try:
-        print(separator)
         choice = int(
-            input("""====== Equinox EduDashboard ======
+            input("""
+==================================
+====== Equinox EduDashboard ======
+----------------------------------
 
 1 - Task Manager
 2 - Grade Tracker
@@ -223,8 +234,9 @@ while True:
             grade_tracker()
         # Quotes Functionality on Exit using random module
         elif choice == 3:
+            print("\n")
             print(f"\n{random.choice(quotes)}")
-            print("\n Goodbye and Have a Nice Day! ;)\n")
+            print("\n====== Goodbye and Have a Nice Day! ;) ======\n")
             break
         else:
             print("ERROR: Select a Valid Option!!!")
