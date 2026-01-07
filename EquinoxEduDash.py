@@ -16,11 +16,14 @@ def display_tasks():
     while True:
         try:
             choice_tasks = int(
-                input("""\n
+                input("""
+========================================
+===== Welcome to the Task Manager! =====
+
 1 - Task Statistics
 2 - Display Tasks
 3 - Add Tasks
-4 - Main Menu
+4 - Main Menu\n
 ->  """).strip()
             )
         except ValueError:
@@ -28,8 +31,7 @@ def display_tasks():
             print("ERROR: Write a Number!!!!\n")
             print(separator)
             continue
-        print(separator)
-
+        print("\n")
         # Task Statistics Menu
         if choice_tasks == 1:
             if not tasks:
@@ -72,13 +74,13 @@ You have [{low_priority}] low priority task(s).\n""")
 
         # Add Tasks Menu With Priority
         elif choice_tasks == 3:
-            new_task = input("Write your new task -> ").strip()
+            new_task = input("Write your new task ->>> ").strip()
             print("\n")
             while True:
                 try:
                     priority = int(
                         input(
-                            "Write the Priority for the Task (1 = High, 2 = Medium, 3 = Low) -> "
+                            "Write the Priority for the Task (1 = High, 2 = Medium, 3 = Low) ->>> "
                         ).strip()
                     )
                     if priority <= 0 or priority > 3:
@@ -104,9 +106,12 @@ def grade_tracker():
         try:
             choice_grades = int(
                 input("""\n
+=========================================
+===== Welcome to the Grade Tracker! =====
+
 1 - Display Grades
 2 - Add Grades
-3 - Main Menu
+3 - Main Menu\n
 ->  """).strip()
             )
         except ValueError:
@@ -114,6 +119,7 @@ def grade_tracker():
             print("ERROR: Write a Number!!!!\n")
             print(separator)
             continue
+        print("\n")
 
         # Display Grades Menu
         if choice_grades == 1:
@@ -123,7 +129,7 @@ def grade_tracker():
                         input("""\n
 1 - Full View
 2 - Brief View
-3 - Grades Menu
+3 - Grades Menu\n
 ->  """).strip()
                     )
                 except ValueError:
@@ -178,14 +184,14 @@ def grade_tracker():
         elif choice_grades == 2:
             while True:
                 try:
-                    new_grade = float(input("\nWrite your new grades -> ").strip())
+                    new_grade = float(input("\nWrite your new grades ->>> ").strip())
                 except ValueError:
                     print("\nERROR: Invalid Option. You must add a Number!!!\n")
                     continue
                 if new_grade < 0 or new_grade > 100:
                     print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
                     continue
-                grade_class = input("Write the Name of your Class -> ").strip()
+                grade_class = input("Write the Name of your Class ->>> ").strip()
                 grades.append([new_grade, grade_class])
                 print("\n")
                 break
@@ -202,7 +208,7 @@ while True:
     try:
         print(separator)
         choice = int(
-            input("""\n====== Equinox EduDashboard ======
+            input("""====== Equinox EduDashboard ======
 
 1 - Task Manager
 2 - Grade Tracker
@@ -215,7 +221,6 @@ while True:
             display_tasks()
         elif choice == 2:
             grade_tracker()
-
         # Quotes Functionality on Exit using random module
         elif choice == 3:
             print(f"\n{random.choice(quotes)}")
