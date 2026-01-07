@@ -10,6 +10,16 @@ separator = "==================================\n"
 tasks = []
 grades = []
 
+empty_task = print("""
+=========================================
+====== You don't have any grades!!! =====
+-----------------------------------------\n""")
+
+empty_grades = print("""
+=========================================
+====== You don't have any grades!!! =====
+-----------------------------------------\n""")
+
 
 # Create Display Tasks function that also allows the user to add tasks if he wants to
 def display_tasks():
@@ -36,10 +46,7 @@ def display_tasks():
         # Task Statistics Menu
         if choice_tasks == 1:
             if not tasks:
-                print("""
-========================================
-====== You don't have any tasks!!! =====
-----------------------------------------\n""")
+                print(empty_task)
             else:
                 hig_priority = 0
                 med_priority = 0
@@ -66,10 +73,7 @@ You have [{low_priority}] low priority task(s).\n""")
         # Display Tasks Menu
         elif choice_tasks == 2:
             if not tasks:
-                print("""
-========================================
-====== You don't have any tasks!!! =====
-----------------------------------------\n""")
+                print(empty_task)
             else:
                 tasks.sort()
                 print("This are your current tasks:")
@@ -148,10 +152,7 @@ def grade_tracker():
                 # Full View Menu for Grades and their Classes
                 if grades_display == 1:
                     if not grades:
-                        print("""
-=========================================
-====== You don't have any grades!!! =====
------------------------------------------\n""")
+                        print(empty_grades)
                     else:
                         grades.sort(reverse=True)
                         print("\nThis are your current grades:")
@@ -163,10 +164,7 @@ def grade_tracker():
                 # Brief View for Quick Glances to Statistics
                 elif grades_display == 2:
                     if not grades:
-                        print("""
-=========================================
-====== You don't have any grades!!! =====
------------------------------------------\n""")
+                        print(empty_grades)
                     else:
                         only_numbers = []
                         for new_grade, grade_class in grades:
