@@ -12,7 +12,7 @@ grades = []
 
 empty_task = """
 =========================================
-====== You don't have any grades!!! =====
+====== You don't have any tasks!!! ======
 -----------------------------------------\n"""
 
 empty_grades = """
