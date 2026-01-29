@@ -1,11 +1,11 @@
 """Equinox EduDashboard"""
 
-# Modules
+# MODULES
 import random
 
 from data_quotes import quotes
 
-# Utilities
+# UTILITIES
 separator = "==================================\n"
 tasks = []
 grades = []
@@ -21,7 +21,7 @@ empty_grades = """
 -----------------------------------------\n"""
 
 
-# Task Manager Functionality
+# TASK MANAGER FUNCTIONALITY
 def task_manager():
     while True:
         try:
@@ -234,7 +234,7 @@ def add_grades():
         break
 
 
-# Welcome Menu
+# WELCOME MENU
 while True:
     try:
         choice = int(
