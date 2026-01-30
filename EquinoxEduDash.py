@@ -7,8 +7,6 @@ from data_quotes import quotes
 
 # UTILITIES
 separator = "==================================\n"
-tasks = []
-grades = []
 
 empty_task = """
 =========================================
@@ -22,7 +20,7 @@ empty_grades = """
 
 
 # TASK MANAGER FUNCTIONALITY
-def task_manager():
+def task_manager(task_list):
     while True:
         try:
             choice_tasks = int(
@@ -46,11 +44,11 @@ def task_manager():
 
         # User's Decision on Menu
         if choice_tasks == 1:
-            task_statistics()
+            task_statistics(task_list)
         elif choice_tasks == 2:
-            display_tasks()
+            display_tasks(task_list)
         elif choice_tasks == 3:
-            add_tasks()
+            add_tasks(task_list)
         elif choice_tasks == 4:
             break
         else:
@@ -58,15 +56,15 @@ def task_manager():
 
 
 # FUNCTION 1 (TASK STATISTICS)
-def task_statistics():
-    if not tasks:
+def task_statistics(task_list):
+    if not task_list:
         print(empty_task)
     else:
         hig_priority = 0
         med_priority = 0
         low_priority = 0
-        print(f"You have [{len(tasks)}] task(s).")
-        for priority, new_task in tasks:
+        print(f"You have [{len(task_list)}] task(s).")
+        for priority, new_task in task_list:
             match priority:
                 case 1:
                     hig_priority += 1
@@ -86,20 +84,20 @@ You have [{low_priority}] low priority task(s).\n""")
 
 
 # FUNCTION 2 (DISPLAY TASKS)
-def display_tasks():
-    if not tasks:
+def display_tasks(task_list):
+    if not task_list:
         print(empty_task)
     else:
-        tasks.sort()
+        task_list.sort()
         print("This are your current tasks:")
-        for priority, new_task in tasks:
+        for priority, new_task in task_list:
             print(f"[{priority}] - {new_task}\n")
         print("\n")
         print(separator)
 
 
 # FUNCTION 3 (ADD TASKS)
-def add_tasks():
+def add_tasks(task_list):
     new_task = input("Write your new task ->>> ").strip()
     print("\n")
     while True:
@@ -112,7 +110,7 @@ def add_tasks():
             if priority <= 0 or priority > 3:
                 print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                 continue
-            tasks.append([priority, new_task])
+            task_list.append([priority, new_task])
             print("\n")
             break
         except ValueError:
@@ -121,7 +119,7 @@ def add_tasks():
 
 
 # GRADE TRACKER FUNCTIONALITY
-def grade_tracker():
+def grade_tracker(grade_list):
     while True:
         try:
             choice_grades = int(
@@ -144,15 +142,15 @@ def grade_tracker():
 
         # User's Decision on Menu
         if choice_grades == 1:
-            display_grades()
+            display_grades(grade_list)
         elif choice_grades == 2:
-            add_grades()
+            add_grades(grade_list)
         elif choice_grades == 3:
             break
 
 
 # FUNCTION 1 (DISPLAY GRADES)
-def display_grades():
+def display_grades(grade_list):
     while True:
         try:
             grades_display = int(
@@ -170,11 +168,11 @@ def display_grades():
 
         # Full View Menu for Grades and their Classes
         if grades_display == 1:
-            full_view_grades()
+            full_view_grades(grade_list)
 
         # Brief View for Quick Glances to Statistics
         elif grades_display == 2:
-            brief_view_menu()
+            brief_view_menu(grade_list)
 
         # Return to Grades Menu
         elif grades_display == 3:
@@ -184,29 +182,29 @@ def display_grades():
 
 
 # FUNCTION 1.1 (FULL VIEW GRADES MENU)
-def full_view_grades():
-    if not grades:
+def full_view_grades(grade_list):
+    if not grade_list:
         print(empty_grades)
     else:
-        grades.sort(reverse=True)
+        grade_list.sort(reverse=True)
         print("\nThis are your current grades:")
-        for new_grade, grade_class in grades:
+        for new_grade, grade_class in grade_list:
             print(f"[{new_grade}] - {grade_class}\n")
         print("\n")
         print(separator)
 
 
 # FUNCTION 1.2 (BRIEF VIEW MENU)
-def brief_view_menu():
-    if not grades:
+def brief_view_menu(grade_list):
+    if not grade_list:
         print(empty_grades)
     else:
         only_numbers = []
-        for new_grade, grade_class in grades:
+        for new_grade, grade_class in grade_list:
             only_numbers.append(new_grade)
 
         total_grades = sum(only_numbers)
-        average = total_grades / len(grades)
+        average = total_grades / len(grade_list)
         max_value = max(only_numbers)
         min_value = min(only_numbers)
 
@@ -218,7 +216,7 @@ def brief_view_menu():
 
 
 # FUNCTION 2 (ADD GRADES)
-def add_grades():
+def add_grades(grade_list):
     while True:
         try:
             new_grade = float(input("\nWrite your new grades ->>> ").strip())
@@ -229,16 +227,20 @@ def add_grades():
             print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
             continue
         grade_class = input("Write the Name of your Class ->>> ").strip()
-        grades.append([new_grade, grade_class])
+        grade_list.append([new_grade, grade_class])
         print("\n")
         break
 
 
 # WELCOME MENU
-while True:
-    try:
-        choice = int(
-            input("""
+def main():
+    tasks = []
+    grades = []
+
+    while True:
+        try:
+            choice = int(
+                input("""
 ==================================
 ====== Equinox EduDashboard ======
 ----------------------------------
@@ -247,21 +249,24 @@ while True:
 2 - Grade Tracker
 3 - Exit\n
 ->  """).strip()
-        )
+            )
 
-        # Submenus
-        if choice == 1:
-            task_manager()
-        elif choice == 2:
-            grade_tracker()
-        # Quotes Functionality on Exit using random module
-        elif choice == 3:
-            print("\n")
-            print(f"\n{random.choice(quotes)}")
-            print("\n====== Goodbye and Have a Nice Day! ;) ======\n")
-            break
-        else:
-            print("ERROR: Select a Valid Option!!!")
-    except ValueError:
-        print("\nERROR: Write a Number!!!\n")
-        continue
+            # Submenus
+            if choice == 1:
+                task_manager(tasks)
+            elif choice == 2:
+                grade_tracker(grades)
+            # Quotes Functionality on Exit using random module
+            elif choice == 3:
+                print("\n")
+                print(f"\n{random.choice(quotes)}")
+                print("\n====== Goodbye and Have a Nice Day! ;) ======\n")
+                break
+            else:
+                print("ERROR: Select a Valid Option!!!")
+        except ValueError:
+            print("\nERROR: Write a Number!!!\n")
+            continue
+
+
+main()
