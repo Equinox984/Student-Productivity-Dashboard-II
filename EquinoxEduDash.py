@@ -4,37 +4,21 @@
 import random
 
 from data_quotes import quotes
-
-# UTILITIES
-separator = "==================================\n"
-
-empty_task = """
-=========================================
-====== You don't have any tasks!!! ======
------------------------------------------\n"""
-
-empty_grades = """
-=========================================
-====== You don't have any grades!!! =====
------------------------------------------\n"""
+from utilities import (
+    edudash_menu,
+    empty_grades,
+    empty_task,
+    grademan_menu,
+    separator,
+    taskman_menu,
+)
 
 
 # TASK MANAGER FUNCTIONALITY
 def task_manager(task_list):
     while True:
         try:
-            choice_tasks = int(
-                input("""
-========================================
-===== Welcome to the Task Manager! =====
-----------------------------------------
-
-1 - Task Statistics
-2 - Display Tasks
-3 - Add Tasks
-4 - Main Menu\n
-->  """).strip()
-            )
+            choice_tasks = int(input(taskman_menu).strip())
         except ValueError:
             print(separator)
             print("ERROR: Write a Number!!!!\n")
@@ -122,17 +106,7 @@ def add_tasks(task_list):
 def grade_tracker(grade_list):
     while True:
         try:
-            choice_grades = int(
-                input("""\n
-=========================================
-===== Welcome to the Grade Tracker! =====
------------------------------------------
-
-1 - Display Grades
-2 - Add Grades
-3 - Main Menu\n
-->  """).strip()
-            )
+            choice_grades = int(input(grademan_menu).strip())
         except ValueError:
             print(separator)
             print("ERROR: Write a Number!!!!\n")
@@ -239,17 +213,7 @@ def main():
 
     while True:
         try:
-            choice = int(
-                input("""
-==================================
-====== Equinox EduDashboard ======
-----------------------------------
-
-1 - Task Manager
-2 - Grade Tracker
-3 - Exit\n
-->  """).strip()
-            )
+            choice = int(input(edudash_menu).strip())
 
             # Submenus
             if choice == 1:
