@@ -73,7 +73,7 @@ def display_tasks(task_list):
         print(empty_task)
     else:
         task_list.sort()
-        print("This are your current tasks:")
+        print("These are your current tasks:")
         for priority, new_task in task_list:
             print(f"[{priority}] - {new_task}\n")
         print("\n")
@@ -161,7 +161,7 @@ def full_view_grades(grade_list):
         print(empty_grades)
     else:
         grade_list.sort(reverse=True)
-        print("\nThis are your current grades:")
+        print("\nThese are your current grades:")
         for new_grade, grade_class in grade_list:
             print(f"[{new_grade}] - {grade_class}\n")
         print("\n")
