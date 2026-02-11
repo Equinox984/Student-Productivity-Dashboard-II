@@ -99,7 +99,7 @@ def add_tasks(task_list):
                     "Write the Priority for the Task (1 = High, 2 = Medium, 3 = Low) ->>> "
                 ).strip()
             )
-            if priority <= 0 or priority > 3:
+            if priority < 1 or priority > 3:
                 print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                 continue
             task_list.append({"priority": priority, "task": new_task})
@@ -241,13 +241,9 @@ def main():
             # Quotes Functionality on Exit using random module
             elif choice == 3:
                 quote = random.choice(quotes)
-                print("\n+==================================================+")
-                print("|                                                  |")
-                print("|               QUOTE OF THE SESSION               |")
-                print("|                                                  |")
-                print("+==================================================+")
+                print("\n        ===== QUOTE OF THE SESSION =====         ")
                 print(f"\n{quote}\n")
-                print("+==================================================+")
+                print("\n+==================================================+")
                 print("|                                                  |")
                 print("|         Goodbye and Have a Nice Day! ;)          |")
                 print("|                                                  |")
