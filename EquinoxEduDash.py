@@ -47,7 +47,6 @@ def task_statistics(task_list):
         hig_priority = 0
         med_priority = 0
         low_priority = 0
-        print(f"You have [{len(task_list)}] task(s).")
         for task in task_list:
             match task["priority"]:
                 case 1:
@@ -58,13 +57,18 @@ def task_statistics(task_list):
                     low_priority += 1
                 case _:
                     pass
-        print(f"""
-You have [{hig_priority}] high priority task(s).
 
-You have [{med_priority}] medium priority task(s).
-
-You have [{low_priority}] low priority task(s).\n""")
-        print(separator)
+        print("\n+--------------------------------------------------+")
+        print("|                                                  |")
+        print("|               TASK STATISTICS                    |")
+        print("|                                                  |")
+        print("+==================================================+")
+        print(f"|  Total Tasks: {len(task_list):<34} |")
+        print("+--------------------------------------------------+")
+        print(f"|  [1] High Priority:   {hig_priority:<26} |")
+        print(f"|  [2] Medium Priority: {med_priority:<26} |")
+        print(f"|  [3] Low Priority:    {low_priority:<26} |")
+        print("+--------------------------------------------------+\n")
 
 
 # FUNCTION 2 (DISPLAY TASKS)
@@ -73,11 +77,15 @@ def display_tasks(task_list):
         print(empty_task)
     else:
         task_list.sort(key=lambda x: x["priority"])
-        print("This are your current tasks:")
+        print("\n+--------------------------------------------------+")
+        print("|                                                  |")
+        print("|               YOUR CURRENT TASKS                 |")
+        print("|                                                  |")
+        print("+==================================================+\n")
         for task in task_list:
-            print(f"[{task['priority']}] - {task['task']}\n")
-        print("\n")
-        print(separator)
+            priority_label = {1: "HIGH", 2: "MED", 3: "LOW"}[task["priority"]]
+            print(f"  [{task['priority']}] {priority_label:4} | {task['task']}")
+        print("\n+--------------------------------------------------+\n")
 
 
 # FUNCTION 3 (ADD TASKS)
@@ -128,10 +136,15 @@ def display_grades(grade_list):
     while True:
         try:
             grades_display = int(
-                input("""\n
-1 - Full View
-2 - Brief View
-3 - Grades Menu\n
+                input("""
++--------------------------------------------------+
+|                                                  |
+|    [1] Full View                                 |
+|    [2] Brief View                                |
+|    [3] Grades Menu                               |
+|                                                  |
++--------------------------------------------------+
+
 ->  """).strip()
             )
         except ValueError:
@@ -161,11 +174,14 @@ def full_view_grades(grade_list):
         print(empty_grades)
     else:
         grade_list.sort(key=lambda x: x["grade"], reverse=True)
-        print("\nThis are your current grades:")
+        print("\n+--------------------------------------------------+")
+        print("|                                                  |")
+        print("|              YOUR CURRENT GRADES                 |")
+        print("|                                                  |")
+        print("+==================================================+\n")
         for grade in grade_list:
-            print(f"[{grade['grade']}] - {grade['class']}\n")
-        print("\n")
-        print(separator)
+            print(f"  [{grade['grade']:>6.2f}] {grade['class']}")
+        print("\n+--------------------------------------------------+\n")
 
 
 # FUNCTION 1.2 (BRIEF VIEW MENU)
@@ -180,11 +196,15 @@ def brief_view_menu(grade_list):
         max_value = max(only_numbers)
         min_value = min(only_numbers)
 
-        print(separator)
-        print(f"Average Grades: {average}")
-        print(f"Highest Grade: {max_value}")
-        print(f"Lowest Grade: {min_value}\n")
-        print(separator)
+        print("\n+--------------------------------------------------+")
+        print("|                                                  |")
+        print("|              GRADE STATISTICS                    |")
+        print("|                                                  |")
+        print("+==================================================+")
+        print(f"  Average Grade:  {average:>6.2f}                  ")
+        print(f"  Highest Grade:  {max_value:>6.2f}                ")
+        print(f"  Lowest Grade:   {min_value:>6.2f}                ")
+        print("+--------------------------------------------------+\n")
 
 
 # FUNCTION 2 (ADD GRADES)
@@ -220,9 +240,18 @@ def main():
                 grade_tracker(grades)
             # Quotes Functionality on Exit using random module
             elif choice == 3:
-                print("\n")
-                print(f"\n{random.choice(quotes)}")
-                print("\n====== Goodbye and Have a Nice Day! ;) ======\n")
+                quote = random.choice(quotes)
+                print("\n+==================================================+")
+                print("|                                                  |")
+                print("|               QUOTE OF THE SESSION               |")
+                print("|                                                  |")
+                print("+==================================================+")
+                print(f"\n{quote}\n")
+                print("+==================================================+")
+                print("|                                                  |")
+                print("|         Goodbye and Have a Nice Day! ;)          |")
+                print("|                                                  |")
+                print("+==================================================+\n")
                 break
             else:
                 print("ERROR: Select a Valid Option!!!")
