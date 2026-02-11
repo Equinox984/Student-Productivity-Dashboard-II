@@ -48,8 +48,8 @@ def task_statistics(task_list):
         med_priority = 0
         low_priority = 0
         print(f"You have [{len(task_list)}] task(s).")
-        for priority, new_task in task_list:
-            match priority:
+        for task in task_list:
+            match task["priority"]:
                 case 1:
                     hig_priority += 1
                 case 2:
@@ -72,10 +72,10 @@ def display_tasks(task_list):
     if not task_list:
         print(empty_task)
     else:
-        task_list.sort()
-        print("These are your current tasks:")
-        for priority, new_task in task_list:
-            print(f"[{priority}] - {new_task}\n")
+        task_list.sort(key=lambda x: x["priority"])
+        print("This are your current tasks:")
+        for task in task_list:
+            print(f"[{task['priority']}] - {task['task']}\n")
         print("\n")
         print(separator)
 
@@ -94,7 +94,7 @@ def add_tasks(task_list):
             if priority <= 0 or priority > 3:
                 print("\nERROR: Invalid Option. Select 1, 2, or 3!!!\n")
                 continue
-            task_list.append([priority, new_task])
+            task_list.append({"priority": priority, "task": new_task})
             print("\n")
             break
         except ValueError:
@@ -160,10 +160,10 @@ def full_view_grades(grade_list):
     if not grade_list:
         print(empty_grades)
     else:
-        grade_list.sort(reverse=True)
-        print("\nThese are your current grades:")
-        for new_grade, grade_class in grade_list:
-            print(f"[{new_grade}] - {grade_class}\n")
+        grade_list.sort(key=lambda x: x["grade"], reverse=True)
+        print("\nThis are your current grades:")
+        for grade in grade_list:
+            print(f"[{grade['grade']}] - {grade['class']}\n")
         print("\n")
         print(separator)
 
@@ -173,9 +173,7 @@ def brief_view_menu(grade_list):
     if not grade_list:
         print(empty_grades)
     else:
-        only_numbers = []
-        for new_grade, grade_class in grade_list:
-            only_numbers.append(new_grade)
+        only_numbers = [grade["grade"] for grade in grade_list]
 
         total_grades = sum(only_numbers)
         average = total_grades / len(grade_list)
@@ -201,7 +199,7 @@ def add_grades(grade_list):
             print("\nERROR: Invalid Option. Insert from 0 to 100!!!\n")
             continue
         grade_class = input("Write the Name of your Class ->>> ").strip()
-        grade_list.append([new_grade, grade_class])
+        grade_list.append({"grade": new_grade, "class": grade_class})
         print("\n")
         break
 
